@@ -13,7 +13,7 @@ const fadeUp: Variants = {
 };
 
 const techStack = [
-  "React", "Node.js", "Python", "Django", "JavaScript",
+  "React", "Node.js", "Python", "MySQL", "SQLite", "PostgreSQL", "JavaScript","Next.js",
   "Java", "MediaPipe", "scikit-learn", "REST APIs", "Unity3D",
 ];
 
@@ -220,7 +220,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.6, duration: 0.6 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
+        className="flex flex-col items-center gap-1 mt-10"
       >
         <span className="text-xs text-white/20 tracking-widest">scroll</span>
         <motion.div

@@ -103,7 +103,7 @@ export default function Contact() {
         >
           <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-5">
             Let&apos;s build{" "}
-            <span className="bg-gradient-to-r from-violet-400 to-sky-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-violet-400 to-sky-400 bg-clip-text text-transparent">
               something
             </span>
             <br />
@@ -126,7 +126,7 @@ export default function Contact() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 + i * 0.08, duration: 0.4 }}
-                className="group flex items-center gap-4 bg-white/[0.02] border border-white/[0.07] hover:border-violet-400/25 rounded-xl px-4 py-3 transition-colors duration-300"
+                className="group flex items-center gap-4 bg-white/2 border border-white/[0.07] hover:border-violet-400/25 rounded-xl px-4 py-3 transition-colors duration-300"
               >
                 <span className="text-sm w-6 text-center text-white/25 group-hover:text-violet-400 transition-colors duration-200">
                   {link.icon}
@@ -154,7 +154,7 @@ export default function Contact() {
           whileInView="show"
           viewport={{ once: true }}
           custom={1}
-          className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 sm:p-8"
+          className="bg-white/3 border border-white/8 rounded-2xl p-6 sm:p-8"
         >
           <div className="flex flex-col gap-5">
 
@@ -169,7 +169,7 @@ export default function Contact() {
                 value={form.name}
                 onChange={handleChange}
                 placeholder="Your full name"
-                className="w-full bg-white/[0.04] border border-white/[0.08] focus:border-violet-400/40 rounded-xl px-4 py-3 text-sm text-white/70 placeholder-white/20 outline-none transition-colors duration-200"
+                className="w-full bg-white/4 border border-white/8 focus:border-violet-400/40 rounded-xl px-4 py-3 text-sm text-white/70 placeholder-white/20 outline-none transition-colors duration-200"
               />
             </div>
 
@@ -184,7 +184,7 @@ export default function Contact() {
                 value={form.email}
                 onChange={handleChange}
                 placeholder="your@email.com"
-                className="w-full bg-white/[0.04] border border-white/[0.08] focus:border-violet-400/40 rounded-xl px-4 py-3 text-sm text-white/70 placeholder-white/20 outline-none transition-colors duration-200"
+                className="w-full bg-white/4 border border-white/8 focus:border-violet-400/40 rounded-xl px-4 py-3 text-sm text-white/70 placeholder-white/20 outline-none transition-colors duration-200"
               />
             </div>
 
@@ -199,7 +199,7 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="Tell me about the opportunity or project..."
                 rows={5}
-                className="w-full bg-white/[0.04] border border-white/[0.08] focus:border-violet-400/40 rounded-xl px-4 py-3 text-sm text-white/70 placeholder-white/20 outline-none transition-colors duration-200 resize-none"
+                className="w-full bg-white/4 border border-white/8 focus:border-violet-400/40 rounded-xl px-4 py-3 text-sm text-white/70 placeholder-white/20 outline-none transition-colors duration-200 resize-none"
               />
             </div>
 
@@ -210,7 +210,7 @@ export default function Contact() {
               className={`w-full py-3 rounded-xl text-sm font-semibold tracking-wide transition-all duration-200
                 ${isValid && status !== "sending"
                   ? "bg-violet-500 hover:bg-violet-400 text-white cursor-pointer"
-                  : "bg-white/[0.05] text-white/25 cursor-not-allowed"
+                  : "bg-white/5 text-white/25 cursor-not-allowed"
                 }`}
             >
               {status === "sending" ? "Sending..." : status === "sent" ? "✓ Message Sent!" : "Send Message →"}
@@ -245,7 +245,7 @@ export default function Contact() {
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.5 }}
         viewport={{ once: true }}
-        className="mt-20 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-3"
+        className="mt-20 pt-8 border-t border-white/6 flex flex-col sm:flex-row items-center justify-between gap-3"
       >
         <p className="text-xs text-white/20 font-mono">
           © {new Date().getFullYear()} Sivaharan Sangavan
