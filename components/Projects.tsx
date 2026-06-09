@@ -21,6 +21,23 @@ const projects = [
   },
   {
     number: "02",
+    tag: "Full Stack · Personal Project",
+    title: "SK Colors – Photography Studio Management System",
+    description:
+      "Complete full-stack web application built for a real-world client — SK Colors Photography. Handles client bookings, admin management, photo delivery, and automated notifications from scratch to production.",
+    bullets: [
+      "Client booking system with 3-step form and automated email notifications",
+      "Admin dashboard with real-time stats and role-based access control",
+      "Secure client gallery with Cloudinary photo upload & download",
+    ],
+    stack: ["React.js", "Node.js", "Express.js", "MongoDB", "Cloudinary", "JWT", "Tailwind CSS", "Vercel"],
+    github: "https://github.com/Sangavan/Photo_Studio",
+    demo: "https://skcolors.vercel.app",
+    demoLabel: "Live Site ↗",
+    featured: true,
+  },
+  {
+    number: "03",
     tag: "ML Project",
     title: "Student Results Prediction System",
     description:
@@ -31,7 +48,7 @@ const projects = [
     featured: false,
   },
   {
-    number: "03",
+    number: "04",
     tag: "Mobile App",
     title: "BookMyFlick – Movie Booking App",
     description:
@@ -42,7 +59,7 @@ const projects = [
     featured: false,
   },
   {
-    number: "04",
+    number: "05",
     tag: "Frontend",
     title: "Language Learning Website",
     description:
@@ -53,6 +70,9 @@ const projects = [
     featured: false,
   },
 ];
+
+const featuredProjects = projects.filter((p) => p.featured);
+const otherProjects = projects.filter((p) => !p.featured);
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
@@ -81,81 +101,91 @@ export default function Projects() {
         </span>
       </motion.div>
 
-      {/* Featured project — full width */}
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        custom={0}
-        className="group relative bg-white/[0.03] border border-white/[0.08] hover:border-violet-400/30 rounded-2xl p-8 mb-5 transition-colors duration-300"
-      >
-        {/* Hover glow */}
-        <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-violet-600/8 to-transparent" />
+      {/* Featured projects — full width, stacked */}
+      <div className="flex flex-col gap-5 mb-5">
+        {featuredProjects.map((project, i) => (
+          <motion.div
+            key={project.number}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            custom={i}
+            className="group relative bg-white/3 border border-white/8 hover:border-violet-400/30 rounded-2xl p-8 transition-colors duration-300"
+          >
+            {/* Hover glow */}
+            <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-linear-to-br from-violet-600/8 to-transparent" />
 
-        {/* Top row */}
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
-          <div>
-            <span className="font-mono text-xs text-violet-400/50 block mb-1">01</span>
-            <span className="text-xs tracking-widest text-white/25 uppercase">
-              Academic Research · 2025–2026
-            </span>
-          </div>
-          <div className="flex gap-3">
-            <a
-              href={projects[0].github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs text-white/30 hover:text-violet-400 border border-white/[0.08] hover:border-violet-400/30 px-3 py-1.5 rounded-lg transition-colors duration-200"
-            >
-              GitHub ↗
-            </a>
-            <a
-              href={projects[0].demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs text-violet-300/70 hover:text-violet-300 border border-violet-400/25 hover:border-violet-400/50 bg-violet-400/10 hover:bg-violet-400/15 px-3 py-1.5 rounded-lg transition-colors duration-200"
-            >
-              Demo ▶
-            </a>
-          </div>
-        </div>
+            {/* Top row */}
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
+              <div>
+                <span className="font-mono text-xs text-violet-400/50 block mb-1">
+                  {project.number}
+                </span>
+                <span className="text-xs tracking-widest text-white/25 uppercase">
+                  {project.tag}
+                </span>
+              </div>
+              <div className="flex gap-3">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs text-white/30 hover:text-violet-400 border border-white/8 hover:border-violet-400/30 px-3 py-1.5 rounded-lg transition-colors duration-200"
+                >
+                  GitHub ↗
+                </a>
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs text-violet-300/70 hover:text-violet-300 border border-violet-400/25 hover:border-violet-400/50 bg-violet-400/10 hover:bg-violet-400/15 px-3 py-1.5 rounded-lg transition-colors duration-200"
+                >
+                  {project.demoLabel ?? "Demo ▶"}
+                </a>
+              </div>
+            </div>
 
-        <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-violet-300 transition-colors duration-200 mb-3">
-          SMARTAR Trainer – AI Fitness App with AR
-        </h3>
-        <p className="text-sm text-white/40 leading-relaxed mb-6 max-w-2xl">
-          Desktop application providing AI-driven workout recommendations and
-          real-time AR posture detection. Highlights incorrect body positions
-          instantly using AR overlays for live visual feedback — combining
-          computer vision, ML classification, and Unity3D rendering.
-        </p>
+            {/* Title */}
+            <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-violet-300 transition-colors duration-200 mb-3">
+              {project.title}
+            </h3>
 
-        {/* Bullets */}
-        <ul className="space-y-1.5 mb-6">
-          {projects[0].bullets!.map((point) => (
-            <li key={point} className="flex items-start gap-2 text-sm text-white/35">
-              <span className="text-violet-400/60 mt-0.5">▹</span>
-              {point}
-            </li>
-          ))}
-        </ul>
+            {/* Description */}
+            <p className="text-sm text-white/40 leading-relaxed mb-6 max-w-2xl">
+              {project.description}
+            </p>
 
-        <div className="flex flex-wrap gap-2">
-          {projects[0].stack.map((tech) => (
-            <span
-              key={tech}
-              className="text-xs font-mono px-2.5 py-1 rounded-md bg-violet-400/10 border border-violet-400/20 text-violet-300/60"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-      </motion.div>
+            {/* Bullets */}
+            {project.bullets && (
+              <ul className="space-y-1.5 mb-6">
+                {project.bullets.map((point) => (
+                  <li key={point} className="flex items-start gap-2 text-sm text-white/35">
+                    <span className="text-violet-400/60 mt-0.5">▹</span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            )}
 
-      {/* Other 3 projects — grid */}
+            {/* Stack chips */}
+            <div className="flex flex-wrap gap-2">
+              {project.stack.map((tech) => (
+                <span
+                  key={tech}
+                  className="text-xs font-mono px-2.5 py-1 rounded-md bg-violet-400/10 border border-violet-400/20 text-violet-300/60"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Other projects — grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {projects.slice(1).map((project, i) => (
+        {otherProjects.map((project, i) => (
           <motion.div
             key={project.number}
             variants={fadeUp}
@@ -163,10 +193,10 @@ export default function Projects() {
             whileInView="show"
             viewport={{ once: true }}
             custom={i + 1}
-            className="group relative flex flex-col bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 hover:border-violet-400/30 transition-colors duration-300"
+            className="group relative flex flex-col bg-white/3 border border-white/8 rounded-2xl p-6 hover:border-violet-400/30 transition-colors duration-300"
           >
             {/* Hover glow */}
-            <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-violet-600/5 to-transparent" />
+            <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-linear-to-br from-violet-600/5 to-transparent" />
 
             {/* Top row */}
             <div className="flex items-start justify-between mb-4">
@@ -193,7 +223,7 @@ export default function Projects() {
               {project.stack.map((tech) => (
                 <span
                   key={tech}
-                  className="text-xs font-mono px-2 py-1 rounded-md bg-white/[0.05] border border-white/[0.08] text-white/35"
+                  className="text-xs font-mono px-2 py-1 rounded-md bg-white/5 border border-white/8 text-white/35"
                 >
                   {tech}
                 </span>
@@ -206,7 +236,7 @@ export default function Projects() {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 text-center text-xs text-white/30 hover:text-violet-400 border border-white/[0.08] hover:border-violet-400/30 px-3 py-1.5 rounded-lg transition-colors duration-200"
+                className="flex-1 text-center text-xs text-white/30 hover:text-violet-400 border border-white/8 hover:border-violet-400/30 px-3 py-1.5 rounded-lg transition-colors duration-200"
               >
                 GitHub ↗
               </a>
@@ -223,7 +253,7 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* GitHub profile CTA */}
+      {/* GitHub CTA */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

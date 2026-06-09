@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const skillGroups = [
   {
@@ -33,42 +33,32 @@ const skillGroups = [
     icon: "🛠️",
     skills: ["GitHub", "VS Code", "Android Studio", "Unity3D", "Figma"],
   },
-  {
-    category: "Soft Skills",
-    icon: "💡",
-    skills: ["Problem Solving", "Teamwork", "Critical Thinking", "Time Management"],
-  },
+];
+
+const softSkills = [
+  { label: "Problem Solving", icon: "🧩", desc: "Breaking down complex problems into simple, elegant solutions" },
+  { label: "Teamwork", icon: "🤝", desc: "Collaborating effectively in diverse, cross-functional teams" },
+  { label: "Critical Thinking", icon: "🧠", desc: "Analysing situations deeply before making informed decisions" },
+  { label: "Time Management", icon: "⏱️", desc: "Delivering quality work consistently within deadlines" },
 ];
 
 const certifications = [
-  {
-    title: "Google AI Essentials",
-    issuer: "Coursera",
-    year: "2025",
-  },
-  {
-    title: "Create a Mockup in Figma",
-    issuer: "Coursera",
-    year: "2025",
-  },
-  {
-    title: "IEEE Xtreme 19.0",
-    issuer: "Competitive Programming",
-    year: "2024",
-  },
-  {
-    title: "IEEE Xtreme 18.0",
-    issuer: "Competitive Programming",
-    year: "2023",
-  },
+  { title: "Google AI Essentials V1", issuer: "Coursera", year: "2025" },
+  { title: "Google AI Essentials", issuer: "Google", year: "2025" },
+  { title: "Stay Ahead of the AI Curve", issuer: "Google", year: "2025" },
+  { title: "Use AI Responsibly", issuer: "Google", year: "2025" },
+  { title: "Discover the Art of Prompting", issuer: "Google", year: "2025" },
+  { title: "Maximize Productivity With AI Tools", issuer: "Google", year: "2025" },
+  { title: "Introduction to AI", issuer: "Google", year: "2025" },
+  { title: "Create a Mockup in Figma", issuer: "Coursera", year: "2025" },
 ];
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
-  show: (i: number) => ({
+  show: (i: number = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: i * 0.08 },
+    transition: { duration: 0.5, delay: i * 0.08 },
   }),
 };
 
@@ -90,7 +80,7 @@ export default function Skills() {
         </span>
       </motion.div>
 
-      {/* Skills grid */}
+      {/* Technical Skills grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
         {skillGroups.map((group, i) => (
           <motion.div
@@ -122,6 +112,61 @@ export default function Skills() {
                 </motion.span>
               ))}
             </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Divider */}
+      <div className="border-t border-white/6 mb-14" />
+
+      {/* Soft Skills — highlighted section */}
+      <motion.div
+        initial={{ opacity: 0, x: -16 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+        className="flex items-center gap-3 mb-8"
+      >
+        <span className="w-6 h-px bg-violet-400/60" />
+        <span className="text-xs tracking-[0.18em] text-violet-400/70 uppercase">
+          Soft Skills
+        </span>
+      </motion.div>
+
+      {/* Soft skills cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+        {softSkills.map((skill, i) => (
+          <motion.div
+            key={skill.label}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.1, duration: 0.5 }}
+            className="group relative bg-linear-to-br from-violet-500/10 to-sky-500/5 border border-violet-400/20 hover:border-violet-400/40 rounded-2xl p-5 text-center transition-all duration-300 hover:from-violet-500/15 hover:to-sky-500/10 overflow-hidden"
+          >
+            {/* Glow */}
+            <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-linear-to-br from-violet-600/10 to-transparent" />
+
+            {/* Icon */}
+            <motion.div
+              initial={{ scale: 0.8 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 + 0.2, duration: 0.4, type: "spring" }}
+              className="text-3xl mb-3"
+            >
+              {skill.icon}
+            </motion.div>
+
+            {/* Label */}
+            <h3 className="text-sm font-bold text-white/80 group-hover:text-violet-300 transition-colors duration-200 mb-2">
+              {skill.label}
+            </h3>
+
+            {/* Description */}
+            <p className="text-xs text-white/30 leading-relaxed">
+              {skill.desc}
+            </p>
           </motion.div>
         ))}
       </div>
@@ -167,26 +212,6 @@ export default function Skills() {
         ))}
       </div>
 
-      {/* Education note */}
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        viewport={{ once: true }}
-        className="mt-10 flex flex-col sm:flex-row sm:items-center justify-between bg-white/2 border border-white/[0.07] rounded-2xl px-6 py-5 gap-3"
-      >
-        <div>
-          <p className="text-sm font-semibold text-white/70">
-            B.Sc. in Information Technology
-          </p>
-          <p className="text-xs text-white/30 mt-0.5">
-            Rajarata University of Sri Lanka · 2023 – Present (Final Year)
-          </p>
-        </div>
-        <span className="font-mono text-xs text-violet-400/50 shrink-0">
-          Final Year
-        </span>
-      </motion.div>
     </section>
   );
 }
