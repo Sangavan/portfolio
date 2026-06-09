@@ -13,8 +13,9 @@ const fadeUp: Variants = {
 };
 
 const techStack = [
-  "React", "Node.js", "Python", "MySQL", "SQLite", "PostgreSQL", "JavaScript","Next.js",
-  "Java", "MediaPipe", "scikit-learn", "REST APIs", "Unity3D",
+  "React", "Node.js", "Python", "MySQL", "SQLite", "MongoDB","PostgreSQL", "JavaScript","Next.js",
+  "Java", "MediaPipe", "scikit-learn", "REST APIs", "Unity3D","Express.js", "GitHub", "Figma", 
+  "JWT", "Cloudinary", "VS Code", "Android Studio",
 ];
 
 export default function Hero() {
