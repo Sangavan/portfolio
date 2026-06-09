@@ -44,7 +44,6 @@ const softSkills = [
 
 const certifications = [
   { title: "Google AI Essentials V1", issuer: "Coursera", year: "2025" },
-  { title: "Google AI Essentials", issuer: "Google", year: "2025" },
   { title: "Stay Ahead of the AI Curve", issuer: "Google", year: "2025" },
   { title: "Use AI Responsibly", issuer: "Google", year: "2025" },
   { title: "Discover the Art of Prompting", issuer: "Google", year: "2025" },
