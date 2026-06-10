@@ -24,7 +24,7 @@ const projects = [
     tag: "Full Stack · Personal Project",
     title: "SK Colors – Photography Studio Management System",
     description:
-      "Complete full-stack web application built for a real-world client — SK Colors Photography. Handles client bookings, admin management, photo delivery, and automated notifications from scratch to production.",
+      "Complete full-stack web application developed for SK Colors Photography as a personal project. Handles client bookings, admin management, photo delivery, and automated notifications from scratch to production.",
     bullets: [
       "Client booking system with 3-step form and automated email notifications",
       "Admin dashboard with real-time stats and role-based access control",
